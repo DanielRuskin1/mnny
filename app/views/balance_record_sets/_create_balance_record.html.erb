@@ -1,0 +1,32 @@
+<div class="row">
+  <%= form_for(BalanceRecord.new, remote: true, url: { controller: "balance_record_sets", action: "create_balance_record", id: balance_record_set.id, page: balance_page }, html: { class: "form-inline" }) do |f| %>
+    <div class="form-group">
+      <div class="col-md-4" id="create-balance-datepicker-div">
+        <div class="input-group date">
+          <div class="input-group-addon">
+            Date
+          </div>
+          <%= f.text_field(:effective_date, data: { "provide" => "datepicker", "date-end-date" => "0d" }, value: StringifyTime.stringify(Time.now.in_time_zone(current_user.timezone), :day), class: "form-control create-balance-datepicker-field") %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="input-group">
+          <div class="input-group-addon">
+            Balance
+          </div>
+          <%= f.text_field(:amount, class: "form-control") %>
+        </div>
+      </div>
+
+      <%= f.submit("Set Balance", class: "btn btn-default btn-primary") %>
+    </div>
+  <% end %>
+
+  <div class="result create-balance-record-error hidden">
+    <%= render("shared/result/error", result: {}) %>
+  </div>
+  <div class="result create-balance-record-success hidden">
+    <%= render("shared/result/success", result: {}) %>
+  </div>
+</div>

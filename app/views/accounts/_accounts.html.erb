@@ -1,0 +1,4 @@
+<% accounts.each do |account| %>
+  <%= render_object(account) %>
+<% end %>
+<%= will_paginate(accounts) %>

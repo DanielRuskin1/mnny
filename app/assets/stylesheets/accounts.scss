@@ -1,0 +1,58 @@
+// Place all the styles related to the accounts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.accounts-container {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.card {
+  padding-top: 2%;
+
+  .card-text-with-padding {
+    padding-left: 2%;
+  }
+
+  .delete-account, .delete-balance-record-set {
+    float: right;
+  }
+
+  table {
+    margin-top: 2%;
+  }
+}
+
+#import_modal {
+  pre {
+    margin-bottom: 0;
+  }
+}
+
+label[for=import-file-selector] {
+  margin-top: 2%;
+}
+
+#import-file-selector {
+  display: none;
+}
+
+#create-balance-datepicker-div {
+  padding-right: 0;
+}
+
+.col-md-4.create-balance-record-set-field-div {
+  width: auto;
+}
+
+.col-md-4.asset-type-dropdown-div {
+  padding-right: 0;
+}
+
+.create-balance-record-set-error, .create-balance-record-set-success {
+  margin-top: 1rem;
+}
+
+.create-balance-record-error, .create-balance-record-success {
+  margin-top: 1rem;
+  padding-left: 15px;
+}

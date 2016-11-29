@@ -1,0 +1,4 @@
+date,asset_type,asset_name,amount
+2016-11-07T22:02:25+00:00,currency,USD,100
+2016-08-07T22:02:25+00:00,currency,JPY,250
+2016-08-07T22:02:25+00:00,stock,AAPL,250

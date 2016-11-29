@@ -1,0 +1,37 @@
+// Place all the styles related to the summary controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.summary-container {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+#historical-chart {
+  .axis--x path {
+    display: none;
+  }
+
+  .line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+}
+
+.current-balances-title {
+  .col-sm-4 {
+    width: 26%;
+  }
+}
+
+.account-balance-tooltip {
+  display: inline;
+}
+
+div.popover-content {
+  .table {
+    margin-bottom: 0;
+  }
+
+  padding: 9px 9px;
+}

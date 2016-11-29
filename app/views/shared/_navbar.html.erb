@@ -1,0 +1,35 @@
+<nav class="navbar navbar-light bg-faded">
+  <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+    <a class="navbar-brand" href="/">
+      <%= image_tag("logo.png") %>
+    </a>
+    <ul class="nav navbar-nav">
+      <% if current_user.nil? %>
+        <li class="nav-item">
+          <%= link_to("Sign In", authentication_path, class: "nav-link") %>
+        </li>
+      <% else %>
+        <li class="<%= (controller_name == "summary") ? "nav-item active" : "nav-item" %>">
+          <%= link_to("Summary", summary_index_path, class: "nav-link") %>
+        </li>
+        <li class="<%= (controller_name == "accounts") ? "nav-item active" : "nav-item" %>">
+          <%= link_to("Accounts", accounts_path, class: "nav-link") %>
+        </li>
+        <li class="<%= (controller_name == "settings") ? "nav-item active" : "nav-item" %>">
+          <%= link_to("Settings", settings_path, class: "nav-link") %>
+        </li>
+      <% end %>
+
+      <li class="<%= (controller_name == "help") ? "nav-item active" : "nav-item" %>">
+        <%= link_to("Help", help_index_path, class: "nav-link") %>
+      </li>
+
+      <% if current_user.present? %>
+        <li class="nav-item">
+          <%= link_to("Sign Out", sessions_path, method: :delete, class: "nav-link") %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,9 @@
+$("#account_<%= @account.id %>").replaceWith("<%= escape_javascript(render_object(@account)) %>")
+
+// Ensure new page links work
+$(function() {
+  $(".sort-paginate-ajax th a, .sort-paginate-ajax .pagination a").on("click", function(){
+    $.getScript(this.href);
+    return false;
+  });
+});

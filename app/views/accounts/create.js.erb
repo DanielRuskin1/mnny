@@ -1,0 +1,10 @@
+<% if @result[:error] %>
+  $("#create-account-error").html("<%= escape_javascript(render("shared/result/error", result: @result)) %>");
+  $("#create-account-success").addClass("hidden");
+  $("#create-account-error").removeClass("hidden");
+<% else %>
+  $("#create-account-success").html("<%= escape_javascript(render("shared/result/success", result: @result)) %>");
+  $("#create-account-success").removeClass("hidden");
+  $("#create-account-error").addClass("hidden");
+  $("#accounts").html("<%= escape_javascript(render("accounts/accounts", accounts: @accounts)) %>");
+<% end %>

@@ -1,0 +1,6 @@
+$('#import_modal').html("<%= escape_javascript(render("import_modal", account: @account, uploader: @uploader))%>");
+$('#import_modal').modal("show");
+
+$("#import-file-selector").on("change", function(e) {
+  $("#import-file-info").html($(this).val());
+})

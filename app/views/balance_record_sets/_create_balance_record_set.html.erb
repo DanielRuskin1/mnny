@@ -1,0 +1,35 @@
+<div class="card card-block create-balance-record-set">
+  <h4 class="card-title">
+    Add Asset
+  </h4>
+  <div class="card-text sort-paginate-ajax">
+    <div class="row">
+      <%= form_for(BalanceRecordSet.new, remote: true, url: { controller: "balance_record_sets", action: "create" }, html: { class: "form-inline" }) do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field(:account_id, value: account.id) %>
+
+          <div class="col-md-4 create-balance-record-set-field-div asset-type-dropdown-div" data-account-id="<%= account.id %>">
+            <%= f.select(:asset_type, options_for_select({ "Currency" => "currency", "Stock" => "stock" }, "currency"), {}, { class: "form-control asset-type-dropdown" }) %>
+          </div>
+
+          <div class="col-md-4 create-balance-record-set-field-div currency-dropdown-div">
+            <%= f.select(:asset_name, options_for_select(AssetPriceTracker::Asset.currencies_to_track.map(&:name), current_user.base_currency), {}, { class: "form-control currency-dropdown" }) %>
+          </div>
+
+          <div class="col-md-4 create-balance-record-set-field-div stock-field-div hidden">
+            <%= f.text_field(:asset_name, { class: "form-control stock-field", placeholder: "Ticker", disabled: true }) %>
+          </div>
+
+          <%= f.submit("Add", class: "btn btn-default btn-primary balance-record-set-create-button") %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="result create-balance-record-set-error hidden">
+      <%= render("shared/result/error", result: {}) %>
+    </div>
+    <div class="result create-balance-record-set-success hidden">
+      <%= render("shared/result/success", result: {}) %>
+    </div>
+  </div>
+</div>

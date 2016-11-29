@@ -1,0 +1,11 @@
+<div id="balance_record_set_<%= balance_record_set.id %>" class="card card-block">
+  <div class="delete-balance-record-set">
+    <%= link_to("Delete", balance_record_set_path(balance_record_set.id), remote: true, method: :delete) %>
+  </div>
+  <h4 class="card-title">
+    <%= balance_record_set.asset_name %>
+  </h4>
+  <div class="card-text sort-paginate-ajax">
+    <%= render("balance_record_sets/balances", balance_page: balance_page, balances: balances, balance_record_set: balance_record_set) %>
+  </div>
+</div>

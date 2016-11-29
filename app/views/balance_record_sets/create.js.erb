@@ -1,0 +1,23 @@
+<% if @result[:error] %>
+  $("#account_<%= @account.id %>").find(".create-balance-record-set-error").html("<%= escape_javascript(render("shared/result/error", result: @result)) %>");
+  $("#account_<%= @account.id %>").find(".create-balance-record-set-success").addClass("hidden");
+  $("#account_<%= @account.id %>").find(".create-balance-record-set-error").removeClass("hidden");
+<% else %>
+  $("#account_<%= @account.id %>").replaceWith("<%= escape_javascript(render_object(@account)) %>");
+
+  $("#account_<%= @account.id %>").find(".create-balance-record-set-success").html("<%= escape_javascript(render("shared/result/success", result: @result)) %>");
+  $("#account_<%= @account.id %>").find(".create-balance-record-set-success").removeClass("hidden");
+  $("#account__<%= @account.id %>").find(".create-balance-record-set-success").addClass("hidden");
+
+  // Ensure new page links work
+  $(function() {
+    $(".sort-paginate-ajax th a, .sort-paginate-ajax .pagination a").on("click", function(){
+      $.getScript(this.href);
+      return false;
+    });
+  });
+  $("#create-balance-datepicker-field").datepicker({
+    format: "mm/dd/yyyy"
+  });
+  
+<% end %>

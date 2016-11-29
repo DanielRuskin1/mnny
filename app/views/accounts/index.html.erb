@@ -1,0 +1,15 @@
+<div class="accounts-container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Accounts</h1>
+    </div>
+  </div>
+
+  <%= render("accounts/create_account") %>
+
+  <div id="accounts">
+    <%= render("accounts", accounts: @accounts) %>
+  </div>
+</div>
+
+<div class="modal fade" id="import_modal" />

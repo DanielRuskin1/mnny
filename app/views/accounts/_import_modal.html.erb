@@ -1,0 +1,50 @@
+<div class="modal-dialog" id="import_modal" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title">Start Import</h4>
+    </div>
+    <%= direct_upload_form_for(@uploader, html: { id: "import-form" }) do |f| %>
+      <div class="modal-body">
+        <p>
+          <strong>You can use this functionality to start an import to your account.</strong>
+        </p>
+
+        <p>
+          When importing data to your account, the import file must be a CSV with three headers: date, currency, and balance.
+          The date should be in valid ISO8601 format.
+          The currency should be in valid ISO4217 format.
+          The balance field should reflect the account's balance on the given date.
+        </p>
+
+        <p>
+          An example valid CSV is:
+        </p>
+
+        <pre>
+          date,asset_type,asset_name,amount
+          2016-11-07T22:02:25+00:00,currency,USD,100
+          2016-08-07T22:02:25+00:00,currency,JPY,250
+          2016-08-07T22:02:25+00:00,stock,AAPL,250
+        </pre>
+
+        <p>
+          To start the account import process, submit your valid CSV here:
+
+          <label class="btn btn-secondary" for="import-file-selector">
+            <%= f.file_field(:csv_file, multiple: true, id: "import-file-selector") %>
+            Choose
+          </label>
+          <span class='label label-info' id="import-file-info"></span>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit(:value => "Submit", :"data-disable-with" => "Submit", :class => "btn btn-primary") %>
+      </div>
+    <% end %>
+  </div>
+</div>

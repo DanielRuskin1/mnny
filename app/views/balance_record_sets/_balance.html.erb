@@ -1,0 +1,9 @@
+<tr id="balance-record-<%= balance.id %>">
+  <th scope="row"><%= StringifyTime.stringify(balance.effective_date.in_time_zone(current_user.timezone), :day) %></th>
+  <td><%= balance.amount_formatted %></td>
+  <td>
+    <%= link_to(destroy_balance_record_balance_record_set_path(balance.balance_record_set.id, balance_record: { id: balance.id }, page: balance_page), remote: true, method: :delete) do %>
+      &times;
+    <% end %>
+  </td>
+</tr>

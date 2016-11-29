@@ -1,0 +1,75 @@
+<div class="card card-block">
+  <h4 class="card-title">
+    Edit
+  </h4>
+  <div class="card-text">
+    <%= form_for(current_user, url: { controller: "settings", action: "edit", id: current_user.id }, method: :put, html: { class: "form-horizontal" }) do |f| %>
+      <div class="form-group row">
+        <%= f.label(:timezone, "Timezone", class: "col-sm-3 col-form-label") %>
+
+        <div class="col-sm-5">
+          <%= f.select(:timezone, options_for_select(User::VALID_TIMEZONES, current_user.timezone), {}, { class: "form-control" }) %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label(:base_currency, class: "col-sm-3 col-form-label") do %>
+          Base Currency
+
+          <% title = "This is the currency that will show up on your Summary page." %>
+          <a class="my-tooltip" data-toggle="tooltip" data-placement="left" title="<%= title %>">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+          </a>
+        <% end %>
+
+        <div class="col-sm-5">
+          <%= f.select(:base_currency, options_for_select(AssetPriceTracker::Asset.currencies_to_track.map(&:name), current_user.base_currency), {}, { class: "form-control" }) %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label(:reminder_period, class: "col-sm-3 col-form-label") do %>
+          Reminder Period
+
+          <% title = "We'll remind you via email to update your account balances." %>
+          <a class="my-tooltip" data-toggle="tooltip" data-placement="left" title="<%= title %>">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+          </a>
+        <% end %>
+
+        <div class="col-sm-5">
+          <% reminder_periods = {} %>
+          <% User::VALID_REMINDER_PERIODS.each do |reminder_period|
+               reminder_periods[reminder_period.try!(:capitalize)] = reminder_period
+             end %>
+          <%= f.select(:reminder_period, options_for_select(reminder_periods, current_user.reminder_period), {}, { class: "form-control" }) %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label(:backup_period, class: "col-sm-3 col-form-label") do %>
+          Backup Period
+
+          <% title = "We'll send you backups of your data via email." %>
+          <a class="my-tooltip" data-toggle="tooltip" data-placement="left" title="<%= title %>">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+          </a>
+        <% end %>
+
+        <div class="col-sm-5">
+          <% backup_periods = {} %>
+          <% User::VALID_BACKUP_PERIODS.each do |backup_period|
+               backup_periods[backup_period.try!(:capitalize)] = backup_period
+             end %>
+          <%= f.select(:backup_period, options_for_select(backup_periods, current_user.backup_period), {}, { class: "form-control" }) %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="offset-sm-3 col-sm-10">
+          <%= f.submit("Submit", class: "btn btn-default btn-primary") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

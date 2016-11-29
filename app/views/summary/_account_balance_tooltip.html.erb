@@ -1,0 +1,30 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Asset</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% assets.each do |asset, metadata| %>
+      <tr>
+        <th scope="row"><%= asset %></th>
+        <td>
+          <% case metadata[:type] %>
+          <% when :currency %>
+            <%= metadata[:raw].to_money(asset).format %>
+          <% when :stock %>
+            <%= metadata[:raw] %>
+          <% else %>
+            <% raise NotImplementedError, metadata[:type] %>
+          <% end %>
+          (~<%= metadata[:converted].to_money(current_user.base_currency).format %>)
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <th scope="row">Total</th>
+      <td><%= sum.to_money(current_user.base_currency).format %></td>
+    </tr>
+  </tbody>
+</table>

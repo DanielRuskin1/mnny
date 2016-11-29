@@ -1,0 +1,22 @@
+<% if @result[:error] %>
+  $("#balance_record_set_<%= @balance_record_set.id %>").find(".create-balance-record-error").html("<%= escape_javascript(render("shared/result/error", result: @result)) %>");
+  $("#balance_record_set_<%= @balance_record_set.id %>").find(".create-balance-record-success").addClass("hidden");
+  $("#balance_record_set_<%= @balance_record_set.id %>").find(".create-balance-record-error").removeClass("hidden");
+<% else %>
+  $("#balance_record_set_<%= @balance_record_set.id %>").replaceWith("<%= escape_javascript(render_object(@balance_record_set, balance_page: @balance_page)) %>");
+
+  $("#balance_record_set_<%= @balance_record_set.id %>").find(".create-balance-record-success").html("<%= escape_javascript(render("shared/result/success", result: @result)) %>");
+  $("#balance_record_set_<%= @balance_record_set.id %>").find(".create-balance-record-success").removeClass("hidden");
+  $("#balance_record_set_<%= @balance_record_set.id %>").find(".create-balance-record-error").addClass("hidden");
+
+  // Ensure new page links work
+  $(function() {
+    $(".sort-paginate-ajax th a, .sort-paginate-ajax .pagination a").on("click", function(){
+      $.getScript(this.href);
+      return false;
+    });
+  });
+  $("#create-balance-datepicker-field").datepicker({
+    format: "mm/dd/yyyy"
+  });
+<% end %>

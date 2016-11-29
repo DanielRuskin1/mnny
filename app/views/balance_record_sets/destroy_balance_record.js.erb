@@ -1,0 +1,10 @@
+$("#balance_record_set_<%= @balance_record_set.id %>").replaceWith("<%= escape_javascript(render_object(@balance_record_set, balance_page: @balance_page)) %>")
+
+// Ensure new page links work
+// TODO: Remove this duplicate code
+$(function() {
+  $(".sort-paginate-ajax th a, .sort-paginate-ajax .pagination a").on("click", function(){
+    $.getScript(this.href);
+    return false;
+  });
+});

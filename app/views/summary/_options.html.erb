@@ -1,0 +1,21 @@
+<div class="card card-block">
+  <h4 class="card-title">
+    Options
+  </h4>
+  <div class="card-text">
+    <%= form_tag("#", id: "graph_form", class: "form-horizontal", method: "get") do %>
+      <div class="form-group row">
+        <%= label_tag(:period, "Graph Period", class: "col-sm-2 col-form-label") %>
+
+        <div class="col-sm-3">
+          <% graph_periods = {} %>
+          <% SummaryController::VALID_PERIODS.each do |graph_period|
+               graph_periods[graph_period.capitalize] = graph_period
+             end %>
+
+          <%= select_tag(:period, options_for_select(graph_periods, "week"), class: "form-control") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

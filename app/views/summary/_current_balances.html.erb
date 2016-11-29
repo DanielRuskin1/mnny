@@ -1,0 +1,48 @@
+<div class="card card-block">
+  <h4 class="card-title">
+    Current Net Worth
+  </h4>
+  <div class="card-text">
+    <table class="table" id="balances_table">
+      <thead>
+        <tr>
+          <th>Accounts</th>
+          <th>Balance (converted to <%= current_user.base_currency %>)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% accounts.each do |account| %>
+          <tr>
+            <th scope="row">
+              <font color="<%= account.color %>">
+                <%= account.name %>
+              </font>
+            </th>
+            <td>
+              <div class="account-balance-tooltip-content hidden" data-account-id="<%= account.id %>">
+                <%= render("account_balance_tooltip", assets: balances[:accounts][account.id][:assets], sum: balances[:accounts][account.id][:sum]) %>
+              </div>
+              <div class="account-balance-tooltip" data-account-id="<%= account.id %>">
+                <%= balances[:accounts][account.id][:sum].to_money(current_user.base_currency).format %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+        <tr>
+          <th scope="row">
+            <font color="<%= SummaryController::NET_WORTH_COLOR %>">Total</font>
+          </th>
+          <td>
+            <div class="account-balance-tooltip-content hidden" data-account-id="sum">
+              <%= render("account_balance_tooltip", assets: balances[:total][:assets], sum: balances[:total][:sum]) %>
+            </div>
+            <div class="account-balance-tooltip" data-account-id="sum">
+              <%= balances[:total][:sum].to_money(current_user.base_currency).format %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

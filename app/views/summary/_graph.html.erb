@@ -1,0 +1,17 @@
+<div class="card card-block">
+  <h4 class="card-title">
+    Historical (<%= current_user.base_currency %>)
+  </h4>
+  <div class="card-text">
+    <svg id="historical-chart" width="960" height="500" viewBox="0 0 960 500"></svg>
+
+    <div class="hidden" id="chart_unavailable">
+      <div class="alert alert-warning">
+        <h5>Whoops!</h5>
+
+        It looks like we're still gathering data on your portfolio. <br/>
+        Please check back in 10-15 minutes to view your chart.
+      </div>
+    </div>
+  </div>
+</div>

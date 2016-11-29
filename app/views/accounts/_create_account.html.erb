@@ -1,0 +1,31 @@
+<div class="card card-block">
+  <h4 class="card-title">
+    Create Account
+  </h4>
+  <div class="card-text card-text-with-padding">
+    <div class="row">
+      <%= form_for(Account.new, remote: true, url: { controller: "accounts", action: "create" }, html: { class: "form-horizontal" }) do |f| %>
+        <div class="form-group row">
+          <%= f.label(:name, "Name", class: "col-sm-2 col-form-label") %>
+
+          <div class="col-sm-5">
+            <%= f.text_field(:name, class: "form-control") %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="offset-sm-2 col-sm-10">
+            <%= f.submit("Submit", class: "btn btn-default btn-primary") %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="create-account-error" class="hidden">
+      <%= render("shared/result/error", result: {}) %>
+    </div>
+    <div id="create-account-success" class="hidden">
+      <%= render("shared/result/success", result: {}) %>
+    </div>
+  </div>
+</div>

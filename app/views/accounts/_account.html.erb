@@ -1,0 +1,23 @@
+<div class="card card-block" id="account_<%= account.id %>">
+  <div class="delete-account">
+    <%= link_to("Delete", account_path(account.id, page: params[:page]), remote: true, method: :delete) %>
+    <div class="pipe-separator">|</div>
+    <%= link_to("Import", start_import_account_path(account.id), remote: true) %>
+  </div>
+  <h4 class="card-title">
+    <font color="<%= account.color %>"><%= account.name %></font>
+
+    <% if account.account_imports.any? %>
+      <i class="fa fa-clock-o" aria-hidden="true" title="Import Pending"></i>
+    <% end %>
+  </h4>
+  <div class="card-text">
+    <%= render("balance_record_sets/create_balance_record_set", account: account) %>
+
+    <% account.balance_record_sets.order(created_at: :desc).each do |balance_record_set| %>
+      <div id="balance-record-set-<%= balance_record_set.id %>">
+        <%= render_object(balance_record_set, balance_page: 1) %>
+      </div>
+    <% end %>
+  </div>
+</div>

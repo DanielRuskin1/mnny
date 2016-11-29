@@ -1,0 +1,86 @@
+<div class="get-started">
+  <h2 class="landing-header">
+    How to Get Started
+  </h2>
+
+  <div class="landing-buttons btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary landing-button active" data-element-id="1">
+      Sign In
+    </button>
+
+    <button type="button" class="btn btn-primary landing-button" data-element-id="2">
+      Create an Account
+    </button>
+
+    <button type="button" class="btn btn-primary landing-button" data-element-id="3">
+      Set your Balance
+    </button>
+
+    <button type="button" class="btn btn-primary landing-button" data-element-id="4">
+      Admire your Work
+    </button>
+  </div>
+
+  <div class="landing-images">
+    <div class="landing-card-container" data-element-id="1">
+      <div class="card landing-card">
+        <div class="col-md-4 landing-image-col">
+          <%= image_tag("landing/sign_in.png", class: "landing-image img-responsive col-xs-12") %>
+        </div>
+
+        <div class="card-block landing-card-text">
+          <p class="card-text">
+            Sign in.  <br/>
+            Click the Sign In button on the top of the page to create your account.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="landing-card-container hidden" data-element-id="2">
+      <div class="card landing-card">
+        <div class="col-md-4 landing-image-col">
+          <%= image_tag("landing/create_account.png", class: "landing-image img-responsive col-xs-12") %>
+        </div>
+
+        <div class="card-block landing-card-text">
+          <p class="card-text">
+            Create an Account. <br/>
+            For example, you could create an account named 'Vanguard Roth IRA'. <br/>
+            You can add cash, stocks, bonds, mutual funds, and more to your account!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="landing-card-container hidden" data-element-id="3">
+      <div class="card landing-card">
+        <div class="col-md-4 landing-image-col">
+          <%= image_tag("landing/add_balance.png", class: "landing-image img-responsive col-xs-12") %>
+        </div>
+
+        <div class="card-block landing-card-text">
+          <p class="card-text">
+            Set a Balance. <br/>
+            This will let our system calculate your current and historical net worth. <br/>
+            You can also import historical balances with the "Import" button.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="landing-card-container hidden" data-element-id="4">
+      <div class="card landing-card">
+        <div class="col-md-4 landing-image-col">
+          <%= image_tag("landing/summary.png", class: "landing-image img-responsive col-xs-12") %>
+        </div>
+
+        <div class="card-block landing-card-text">
+          <p class="card-text">
+            Within about 10 minutes, your summary will be ready to go!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

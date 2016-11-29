@@ -1,0 +1,17 @@
+<%= render("balance_record_sets/create_balance_record", balance_page: balance_page, balance_record_set: balance_record_set, balances: balances) %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Balance</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% balances.each do |balance| %>
+      <%= render_object(balance, balance_page: balance_page) %>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate(balances, params: { controller: "balance_record_sets", action: "show", id: balance_record_set.id }) %>

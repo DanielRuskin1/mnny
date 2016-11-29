@@ -1,0 +1,10 @@
+<% if @result[:error] %>
+  $("#help-error").html("<%= escape_javascript(render("shared/result/error", result: @result)) %>");
+  $("#help-success").addClass("hidden");
+  $("#help-error").removeClass("hidden");
+<% else %>
+  $("#help_form").html("<%= escape_javascript(render("help/help_form")) %>");
+  $("#help-success").html("<%= escape_javascript(render("shared/result/success", result: @result)) %>");
+  $("#help-success").removeClass("hidden");
+  $("#help-error").addClass("hidden");
+<% end %>

@@ -1,0 +1,9 @@
+$('#balance-record-set-<%= escape_javascript(@balance_record_set.id.to_s) %>').html("<%= escape_javascript(render_object(@balance_record_set, balance_page: @balance_page)) %>");
+
+// Ensure new page links work
+$(function() {
+  $(".sort-paginate-ajax th a, .sort-paginate-ajax .pagination a").on("click", function(){
+    $.getScript(this.href);
+    return false;
+  });
+});
