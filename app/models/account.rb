@@ -24,7 +24,8 @@ class Account < ApplicationRecord
       "greenyellow",
       "lemonchiffon",
       "lightblue",
-      "orchid"
+      "orchid",
+      "palevioletred"
     ]
   end
 
