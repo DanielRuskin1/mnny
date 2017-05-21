@@ -25,7 +25,15 @@ class Account < ApplicationRecord
       "lemonchiffon",
       "lightblue",
       "orchid",
-      "palevioletred"
+      "palevioletred",
+      "green",
+      "aqua",
+      "lightsalmon",
+      "indianred",
+      "mediumslateblue",
+      "darkslateblue",
+      "lightgreen",
+      "aquamarine"
     ]
   end
 

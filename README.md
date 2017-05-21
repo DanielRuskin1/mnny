@@ -10,7 +10,7 @@ The code in this repository is deployed to Heroku, and several add-ons are used:
 2. Memcachier (caching)
 3. Keen.IO (user analytics)
 4. NewRelic (server/request analytics)
-5. Postmark (outgoing emails)
+5. SendGrid (outgoing emails)
 6. Rollbar (exception monitoring)
 7. Heroku Scheduler (task scheduling)
 

@@ -55,9 +55,6 @@ gem "d3-rails", "~> 4.1.0"
 # Locking
 gem "with_advisory_lock", "~> 3.0.0"
 
-# Outgoing emails
-gem "postmark-rails", "~> 0.14.0"
-
 # File uploads
 gem "carrierwave", "~> 1.0.0.rc"
 gem "fog", "~> 1.38.0"
