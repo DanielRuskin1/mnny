@@ -1,6 +1,12 @@
 # Net Worth Tracker
 
-A simple application to keep track of your net worth.  Check it out at https://www.mnny.fi/!  
+A simple application to keep track of your net worth.  Features include:
+
+- Keeping track of current and historical account balances
+
+- Viewing a graph of all historical balances
+
+- Support for most asset types (equities, mutual funds, foreign currencies, etc).  All balances convert to your base currency.
 
 # Infra
 
